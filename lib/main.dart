@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -147,51 +146,6 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       },
     );
-  }
-
-  Widget _buildPopupDialog(BuildContext context) {
-    if (Random().nextInt(10) == 1) {
-      timerCerrar(context);
-      return new AlertDialog(
-        content: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          splashColor: Colors.brown.withOpacity(0.5),
-          child: Ink(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/goldenfish.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-      );
-    } else {
-      Navigator.of(context).pop();
-      return new AlertDialog(
-        title: const Text('Pez dorado'),
-        content: new Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("Click"),
-          ],
-        ),
-        actions: <Widget>[
-          new ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              timer.cancel();
-            },
-            child: Text('Close'),
-          ),
-        ],
-      );
-    }
   }
 }
 

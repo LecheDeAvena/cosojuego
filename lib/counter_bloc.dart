@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'counter_event.dart';
@@ -8,7 +7,6 @@ class CounterBloc {
   int _counter = 0;
   var precios = [10, 100, 500, 1000];
   var upgrades = [0, 0, 0, 0];
-  Timer _timer;
 
   final _counterStateController = StreamController<int>();
   StreamSink<int> get _inCounter => _counterStateController.sink; //Input - Sink
@@ -69,13 +67,6 @@ class CounterBloc {
 
   void startUpgrade() {
     var oneSec = Duration(seconds: 1);
-    _timer = new Timer.periodic(
-      oneSec,
-      (timer) {
-        upgradesCounter();
-        _inCounter.add(_counter);
-      },
-    );
   }
 
   void dispose() {
